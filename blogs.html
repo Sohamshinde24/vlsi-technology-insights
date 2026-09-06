@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blogs | VLSI Technology Insights</title>
+  <meta name="description" content="Technical articles and learning resources related to VLSI and electronics. Explore NMOS, PMOS, and CMOS circuit design.">
+  <meta name="author" content="VLSI Technology Insights">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo" id="brand-logo">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          <span>VLSI Technology Insights</span>
+        </a>
+
+        <!-- Hamburger Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" id="menu-toggle">
+          <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="blogs.html" class="nav-link active" id="nav-blogs">Blogs</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Header Section -->
+    <section class="blogs-header" aria-labelledby="blogs-page-heading">
+      <div class="container">
+        <h1 class="section-title" id="blogs-page-heading">My Blogs</h1>
+        <p class="section-subtitle">
+          Technical articles and learning resources related to VLSI and electronics.
+        </p>
+      </div>
+    </section>
+
+    <!-- Articles Grid Section -->
+    <section class="section" aria-label="Blog Articles List">
+      <div class="container">
+        <div class="blog-grid" id="blog-posts-container">
+
+          <!-- Blog Card: NMOS vs CMOS Inverter -->
+          <article class="blog-card" id="blog-card-nmos-cmos">
+            <div class="blog-card-media">
+              <img src="images/comparison.png" alt="NMOS vs CMOS Inverter comparison schematics and technology metrics" loading="lazy">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">
+                <span class="badge">VLSI</span>
+              </div>
+              <h2 class="blog-card-title">
+                <a href="nmos-cmos.html">NMOS vs CMOS Inverter: Performance, Power and Area Comparison</a>
+              </h2>
+              <p class="blog-card-excerpt">
+                Understand the differences between NMOS and CMOS inverters and compare their performance, power consumption, area, noise margin, and applications in modern VLSI.
+              </p>
+              <div class="blog-card-footer">
+                <a href="nmos-cmos.html" class="btn btn-primary btn-sm" id="btn-read-article">
+                  Read Article
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <p class="footer-brand">VLSI Technology Insights</p>
+        <p class="footer-motto">Learn • Explore • Understand • Share</p>
+        <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="about.html">About Me</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 VLSI Technology Insights. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

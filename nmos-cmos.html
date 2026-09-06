@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NMOS vs CMOS Inverter: Performance, Power and Area Comparison | VLSI Technology Insights</title>
+  <meta name="description" content="A simple comparison of NMOS and CMOS inverters covering performance, power consumption, area, noise margin, applications, and modern VLSI usage.">
+  <meta name="author" content="VLSI Technology Insights">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo" id="brand-logo">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          <span>VLSI Technology Insights</span>
+        </a>
+
+        <!-- Hamburger Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" id="menu-toggle">
+          <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="blogs.html" class="nav-link active" id="nav-blogs">Blogs</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Article Header -->
+    <header class="article-header">
+      <div class="article-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <a href="blogs.html">Blogs</a>
+          <span class="separator">/</span>
+          <span class="current">NMOS vs CMOS Inverter</span>
+        </nav>
+
+        <div style="margin-bottom: 0.85rem;">
+          <span class="badge">VLSI</span>
+        </div>
+
+        <h1 class="article-title">NMOS vs CMOS Inverter: Performance, Power and Area Comparison</h1>
+
+        <div class="article-meta">
+          <span class="article-meta-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Academic Series
+          </span>
+          <span class="article-meta-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            6 min read
+          </span>
+          <span class="article-meta-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            VLSI Student Insights
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body">
+      <div class="article-container">
+
+
+        <!-- Section: Introduction -->
+        <section id="introduction">
+          <h2>Introduction</h2>
+          <p>
+            In Very Large Scale Integration (VLSI) design, an inverter is one of the most basic and important digital logic circuits. It performs the NOT operation, meaning that it produces an output opposite to its input. Inverters are widely used as building blocks for logic gates, memory circuits, processors, and other digital systems.
+          </p>
+          <p>
+            Two important inverter technologies are the NMOS inverter and the CMOS inverter. Although both can perform the NOT operation, they differ significantly in terms of circuit structure, power consumption, performance, and chip area.
+          </p>
+          <p>
+            The comparison between NMOS and CMOS inverters helps us understand why CMOS technology has become the dominant technology for modern VLSI circuits.
+          </p>
+        </section>
+
+        <!-- Section 1: NMOS Inverter -->
+        <section id="nmos-inverter">
+          <h2>1. NMOS Inverter</h2>
+          <p>
+            An NMOS inverter is a logic inverter implemented using N-channel MOSFETs (NMOS transistors). In its basic form, it consists of an NMOS transistor and a load device.
+          </p>
+          <p>
+            The input is applied to the gate of the NMOS transistor, while the output is taken from the drain.
+          </p>
+
+          <!-- Circuit Diagram Figure -->
+          <figure class="figure-container">
+            <img src="images/nmos-inverter.png" alt="Schematic circuit diagram of an NMOS Inverter showing VDD, load resistor, NMOS driver transistor, Vin gate input, and Vout drain output" class="figure-image" loading="lazy">
+            <figcaption class="figure-caption">Figure 1: Basic NMOS Inverter Circuit Schematic with Pull-up Load</figcaption>
+          </figure>
+        </section>
+
+        <!-- Section: Working of NMOS Inverter -->
+        <section id="working-nmos">
+          <h3>Working of NMOS Inverter</h3>
+          <ul>
+            <li>When the input is LOW (0), the NMOS transistor is OFF.</li>
+            <li>The load pulls the output toward HIGH (1).</li>
+            <li>When the input is HIGH (1), the NMOS transistor turns ON.</li>
+            <li>The transistor provides a path to ground, making the output LOW (0).</li>
+          </ul>
+
+          <div class="logic-state-box">
+            <div class="state-row">Input 0 &rarr; Output 1</div>
+            <div class="state-row">Input 1 &rarr; Output 0</div>
+          </div>
+        </section>
+
+        <!-- Section: Advantages of NMOS Inverter -->
+        <section id="advantages-nmos">
+          <h3>Advantages of NMOS Inverter</h3>
+          <ul>
+            <li>Simple circuit structure.</li>
+            <li>Requires fewer transistors.</li>
+            <li>Smaller area compared with early CMOS implementations.</li>
+            <li>Historically useful for high-density digital circuits.</li>
+          </ul>
+        </section>
+
+        <!-- Section: Disadvantages of NMOS Inverter -->
+        <section id="disadvantages-nmos">
+          <h3>Disadvantages of NMOS Inverter</h3>
+          <ul>
+            <li>Consumes static power when the transistor is ON.</li>
+            <li>Has a relatively lower noise margin.</li>
+            <li>Output HIGH may not be a strong logic HIGH depending on the load configuration.</li>
+            <li>Less suitable for modern low-power VLSI systems.</li>
+          </ul>
+        </section>
+
+        <!-- Section 2: CMOS Inverter -->
+        <section id="cmos-inverter">
+          <h2>2. CMOS Inverter</h2>
+          <p>
+            A CMOS inverter is made using two complementary MOSFETs:
+          </p>
+          <ul>
+            <li>One PMOS transistor</li>
+            <li>One NMOS transistor</li>
+          </ul>
+          <p>
+            The PMOS transistor is connected to the supply voltage (VDD), while the NMOS transistor is connected to ground. Their gates are connected together and receive the same input.
+          </p>
+          <p>
+            The output is taken from the common connection between the PMOS and NMOS transistors.
+          </p>
+
+          <!-- Circuit Diagram Figure -->
+          <figure class="figure-container">
+            <img src="images/cmos-inverter.png" alt="Schematic circuit diagram of a complementary CMOS Inverter with PMOS connected to VDD and NMOS connected to ground" class="figure-image" loading="lazy">
+            <figcaption class="figure-caption">Figure 2: Complementary CMOS Inverter Circuit Schematic (PMOS Pull-Up + NMOS Pull-Down)</figcaption>
+          </figure>
+        </section>
+
+        <!-- Section: Working of CMOS Inverter -->
+        <section id="working-cmos">
+          <h3>Working of CMOS Inverter</h3>
+          <p>When the input is LOW (0):</p>
+          <ul>
+            <li>PMOS turns ON.</li>
+            <li>NMOS turns OFF.</li>
+            <li>Output is connected to VDD.</li>
+            <li>Output becomes HIGH (1).</li>
+          </ul>
+          <p>When the input is HIGH (1):</p>
+          <ul>
+            <li>PMOS turns OFF.</li>
+            <li>NMOS turns ON.</li>
+            <li>Output is connected to ground.</li>
+            <li>Output becomes LOW (0).</li>
+          </ul>
+
+          <div class="logic-state-box">
+            <div class="state-row">Input 0 &rarr; Output 1</div>
+            <div class="state-row">Input 1 &rarr; Output 0</div>
+          </div>
+        </section>
+
+        <!-- Section 3: Performance Comparison -->
+        <section id="performance-comparison">
+          <h2>3. Performance Comparison</h2>
+          <p>
+            Performance of an inverter is generally evaluated using parameters such as propagation delay, switching speed, noise margin, and drive capability.
+          </p>
+
+          <h3>NMOS</h3>
+          <p>
+            NMOS inverters can provide good switching performance, but their performance depends strongly on the load transistor and circuit configuration. The rising and falling transitions may not be equally strong.
+          </p>
+
+          <h3>CMOS</h3>
+          <p>
+            CMOS provides relatively balanced pull-up and pull-down operation because it uses complementary PMOS and NMOS transistors. It provides good switching characteristics and high noise immunity.
+          </p>
+          <p>
+            CMOS technology can also be scaled effectively for modern high-speed processors and digital circuits.
+          </p>
+        </section>
+
+        <!-- Section 4: Power Consumption Comparison -->
+        <section id="power-comparison">
+          <h2>4. Power Consumption Comparison</h2>
+          <p>
+            Power consumption is one of the most important parameters in VLSI design.
+          </p>
+
+          <h3>NMOS Power Consumption</h3>
+          <p>
+            In an NMOS inverter, a conducting path can exist between the supply and ground during a logic state. As a result, static power consumption can be significant.
+          </p>
+          <p>
+            This makes NMOS less suitable for battery-powered and low-power applications.
+          </p>
+
+          <h3>CMOS Power Consumption</h3>
+          <p>
+            One of the biggest advantages of CMOS is its very low static power consumption.
+          </p>
+          <p>In steady-state operation:</p>
+          <ul>
+            <li>For input LOW, PMOS is ON and NMOS is OFF.</li>
+            <li>For input HIGH, PMOS is OFF and NMOS is ON.</li>
+          </ul>
+          <p>
+            Ideally, there is no direct DC path from VDD to ground in either stable state.
+          </p>
+          <p>
+            CMOS mainly consumes power during switching due to charging and discharging of capacitances.
+          </p>
+          <p>
+            The dynamic power can approximately be expressed as:
+          </p>
+
+          <div class="equation-box">
+            <div class="equation-main">
+              P_dynamic = &alpha; &middot; C_L &middot; V_DD&sup2; &middot; f
+            </div>
+            <div class="equation-variables">
+              where:
+              <ul>
+                <li><strong>&alpha;</strong> = switching activity</li>
+                <li><strong>C_L</strong> = load capacitance</li>
+                <li><strong>V_DD</strong> = supply voltage</li>
+                <li><strong>f</strong> = switching frequency</li>
+              </ul>
+            </div>
+          </div>
+
+          <p>
+            Thus, CMOS is highly suitable for low-power VLSI design.
+          </p>
+        </section>
+
+        <!-- Section 5: Area Comparison -->
+        <section id="area-comparison">
+          <h2>5. Area Comparison</h2>
+          <p>
+            The physical area occupied by transistors is important because smaller circuits allow more devices to be integrated on a single chip.
+          </p>
+
+          <h3>NMOS</h3>
+          <p>
+            A basic NMOS inverter can require fewer active devices, so its transistor count and layout can be smaller in some implementations.
+          </p>
+          <p>
+            However, it requires a load device, and the actual area depends on the technology and implementation.
+          </p>
+
+          <h3>CMOS</h3>
+          <p>
+            A CMOS inverter requires two transistors: one PMOS and one NMOS.
+          </p>
+          <p>
+            Although it uses more transistors than a basic NMOS inverter, modern CMOS fabrication techniques allow extremely small transistor dimensions. CMOS therefore provides an excellent balance between area, power, and performance.
+          </p>
+        </section>
+
+        <!-- Section 6: NMOS vs CMOS Inverter Comparison Table -->
+        <section id="comparison-table-section">
+          <h2>6. NMOS vs CMOS Inverter</h2>
+          <p>
+            The following table summarizes the key structural and electrical differences between NMOS and CMOS inverter technologies:
+          </p>
+
+          <div class="table-responsive-wrapper">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th scope="col">Parameter</th>
+                  <th scope="col">NMOS Inverter</th>
+                  <th scope="col">CMOS Inverter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Transistors</td>
+                  <td>NMOS with load</td>
+                  <td>One NMOS + One PMOS</td>
+                </tr>
+                <tr>
+                  <td>Logic Operation</td>
+                  <td>NOT</td>
+                  <td>NOT</td>
+                </tr>
+                <tr>
+                  <td>Static Power</td>
+                  <td>Higher</td>
+                  <td>Very low ideally</td>
+                </tr>
+                <tr>
+                  <td>Dynamic Power</td>
+                  <td>Present</td>
+                  <td>Present</td>
+                </tr>
+                <tr>
+                  <td>Noise Margin</td>
+                  <td>Lower</td>
+                  <td>Higher</td>
+                </tr>
+                <tr>
+                  <td>Switching Performance</td>
+                  <td>Good, configuration dependent</td>
+                  <td>Excellent</td>
+                </tr>
+                <tr>
+                  <td>Power Efficiency</td>
+                  <td>Lower</td>
+                  <td>Higher</td>
+                </tr>
+                <tr>
+                  <td>Area</td>
+                  <td>Can be smaller in basic implementations</td>
+                  <td>Slightly larger at transistor level</td>
+                </tr>
+                <tr>
+                  <td>Output Levels</td>
+                  <td>May be degraded depending on load</td>
+                  <td>Strong logic 0 and logic 1</td>
+                </tr>
+                <tr>
+                  <td>VLSI Suitability</td>
+                  <td>Limited in modern low-power designs</td>
+                  <td>Excellent</td>
+                </tr>
+                <tr>
+                  <td>Modern Usage</td>
+                  <td>Mostly historical/specialized</td>
+                  <td>Dominant technology</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 7: Why CMOS is Preferred in Modern VLSI -->
+        <section id="why-cmos-preferred">
+          <h2>7. Why CMOS is Preferred in Modern VLSI</h2>
+          <p>
+            CMOS technology is widely used in modern VLSI because it provides an excellent combination of:
+          </p>
+          <ol>
+            <li>Low static power consumption</li>
+            <li>High noise immunity</li>
+            <li>Full logic swing</li>
+            <li>Good switching performance</li>
+            <li>High transistor density</li>
+            <li>Low power-delay product</li>
+            <li>Compatibility with large-scale integration</li>
+          </ol>
+          <p>
+            These advantages make CMOS suitable for microprocessors, memories, mobile devices, embedded systems, IoT devices, and other digital integrated circuits.
+          </p>
+        </section>
+
+        <!-- Section 8: Applications -->
+        <section id="applications">
+          <h2>8. Applications</h2>
+
+          <h3>NMOS Inverter</h3>
+          <p>NMOS technology was historically used in:</p>
+          <ul>
+            <li>Early microprocessors</li>
+            <li>Digital logic circuits</li>
+            <li>Memory circuits</li>
+            <li>Older integrated circuits</li>
+          </ul>
+
+          <h3>CMOS Inverter</h3>
+          <p>CMOS technology is currently used extensively in:</p>
+          <ul>
+            <li>Microprocessors</li>
+            <li>Smartphones</li>
+            <li>Digital signal processors</li>
+            <li>Memory devices</li>
+            <li>Embedded systems</li>
+            <li>IoT devices</li>
+            <li>System-on-Chip (SoC) designs</li>
+            <li>Digital logic circuits</li>
+          </ul>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+          <h2>Conclusion</h2>
+          <p>
+            The NMOS and CMOS inverters both perform the fundamental NOT operation, but their electrical characteristics are significantly different. NMOS technology offers a relatively simple structure and can provide compact implementations, but it suffers from higher static power consumption and weaker logic characteristics.
+          </p>
+          <p>
+            CMOS uses complementary PMOS and NMOS transistors to achieve low static power consumption, full voltage swing, high noise immunity, and good performance. Although a CMOS inverter uses two transistors, its overall advantages make it much more suitable for modern VLSI systems.
+          </p>
+          <p>
+            Therefore, CMOS has become the preferred technology for modern digital VLSI design, especially where low power, high performance, reliability, and scalability are important.
+          </p>
+        </section>
+
+        <!-- Key Takeaway -->
+        <section id="key-takeaway">
+          <div class="takeaway-card">
+            <h3 class="takeaway-heading">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              Key Takeaway
+            </h3>
+            <div class="takeaway-content">
+              <p class="takeaway-bullet">&bull; NMOS &rarr; Simpler but higher static power</p>
+              <p class="takeaway-bullet">&bull; CMOS &rarr; Low power, high noise immunity, and better overall VLSI performance</p>
+              <p style="margin-top: 0.75rem; margin-bottom: 0;">
+                In modern VLSI, the advantages of CMOS make it the clear choice for most digital applications.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <a href="blogs.html" class="btn btn-outline btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back to All Blogs
+          </a>
+          <a href="about.html" class="btn btn-outline btn-sm">
+            About the Author
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <p class="footer-brand">VLSI Technology Insights</p>
+        <p class="footer-motto">Learn • Explore • Understand • Share</p>
+        <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="about.html">About Me</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 VLSI Technology Insights. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to top" id="back-to-top-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
